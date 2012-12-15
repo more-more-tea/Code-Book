@@ -24,6 +24,7 @@ namespace interview {
         BinaryTreeNode(T &data,
                        BinaryTreeNode<T> *left,
                        BinaryTreeNode<T> *right);
+        virtual ~BinaryTreeNode() {}
 
         // get left child
         inline BinaryTreeNode<T> *left();
@@ -33,7 +34,7 @@ namespace interview {
         inline T &data();
 
     private:
-        T &_satellite;
+        T _satellite;
 
         BinaryTreeNode<T> *_left;
         BinaryTreeNode<T> *_right;

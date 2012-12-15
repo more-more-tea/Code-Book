@@ -8,7 +8,7 @@
 #include "Stack.h"
 
 namespace interview {
-    template<typename T> class BSTInOrderIterator:Iterator<T> {
+    template<typename T> class BSTInOrderIterator : public Iterator<T> {
     public:
         BSTInOrderIterator(BinarySearchTree<T> *bst);
         ~BSTInOrderIterator();
@@ -18,8 +18,10 @@ namespace interview {
         bool hasNext();
 
     private:
-        Stack<BinaryTreeNode<T> *> *_stack;
+        Stack<BinaryTreeNode<T> *> _stack;
     };
 }
+
+#include "BSTInOrderIterator.cpp"
 
 #endif       // BSTINITER_H

@@ -9,7 +9,7 @@
 #include "Stack.h"
 
 namespace interview {
-    template<typename T> class BSTPostOrderIterator:Iterator<T> {
+    template<typename T> class BSTPostOrderIterator : public Iterator<T> {
     public:
         BSTPostOrderIterator(BinarySearchTree<T> *bst);
         ~BSTPostOrderIterator();
@@ -19,8 +19,10 @@ namespace interview {
         bool hasNext();
 
     private:
-        Stack<BinaryTreeNode<T> *> *_stack;
+        Stack<BinaryTreeNode<T> *> _stack;
     };
 }
 
-#endif         // BSTPOSTITER_H
+#include "BSTPostOrderIterator.cpp"
+
+#endif         // BSTPSTITER_H

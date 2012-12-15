@@ -18,7 +18,7 @@ namespace interview {
         T &next();
         bool hasNext();
     private:
-        Stack<BinaryTreeNode<T> *> *_stack;
+        Stack<BinaryTreeNode<T> *> _stack;
     };
 }
 
