@@ -5,12 +5,14 @@
 #define TREE_H
 
 namespace interview {
-    template<typename T, typename U> class Tree {
+    template<typename T> class Tree {
     public:
-        // get object by key
-        virtual U *get(T &key) = 0;
         // insert object into tree
-        virtual bool add(T &key, U *satellite) = 0;
+        virtual bool add(T &data) = 0;
+        // delete object specified by key
+        virtual bool del(T &data) = 0;
+
+        virtual ~Tree() {};
     };
 }
 

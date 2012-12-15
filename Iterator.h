@@ -2,15 +2,15 @@
  * Iterator.h -- abstract interfaces for iterator
  */
 #ifndef ITERATOR_H
-#define ITERATOR_h
+#define ITERATOR_H
 
 namespace interview {
     template<typename T> class Iterator {
     public:
         // return true if the underlying data structure has more elements
-        bool hasNext();
+        virtual bool hasNext() = 0;
         // return object under cursor currently
-        T &next();
+        virtual T &next() = 0;
     };
 }
 

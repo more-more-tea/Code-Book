@@ -1,29 +1,45 @@
 /*
  * BinarySearchTree.h -- implementation for template BST
  */
+#ifndef BINARY_SEARCH_TREE_H
+#define BINARY_SEARCH_TREE_H
+
 #include "Tree.h"
+#include "BinaryTreeNode.h"
 
 #include "BSTPreOrderIterator.h"
 #include "BSTInOrderIterator.h"
 #include "BSTPostOrderIterator.h"
 
-#ifndef BINARY_SEARCH_TREE_H
-#define BINARY_SEARCH_TREE_H
-
 namespace interview {
-    template<typename T, typename U> class BinarySearchTreeNode;
+    template<typename T> class BinaryTreeNode;
 
-    template<typename T, typename U> class BinarySearchTree:Tree<T, U> {
+    template<typename T> class BinarySearchTree:Tree<T> {
+        // friendship declaration
+        friend class BSTPreOrderIterator<T>;
+        friend class BSTInOrderIterator<T>;
+        friend class BSTPostOrderIterator<T>;
+
     public:
-        virtual U &get(T &key);
-        virtual bool add(T &key, U &satellite);
+        virtual bool add(T &data);
+        virtual bool del(T &data);
+        BinarySearchTree(void);
+        ~BinarySearchTree(void);
 
         // iterator
-        Iterator<U> preorder();
-        Iterator<U> inorder();
-        Iterator<U> postorder();
+        // USER should delete the iterator object after use
+        Iterator<T> *preorder();
+        Iterator<T> *inorder();
+        Iterator<T> *postorder();
     private:
-        BinarySearchTreeNode<T, U> *_root;
+        BinaryTreeNode<T> *_root;
+
+        // find binary tree node
+        // return the pointer to the pointer pointing to the node
+        // in its parent node
+        // if returned pointer points to a NULL object
+        // object is not found.
+        BinaryTreeNode<T> **find(T &data);
     };
 }
 

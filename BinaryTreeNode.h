@@ -6,30 +6,37 @@
 #define BINARY_TREE_NODE_H
 
 namespace interview {
-    template<typename T, typename U> class BinaryTreeNode {
+    template<typename T> class BinarySearchTree;
+    template<typename T> class BSTPreOrderIterator;
+    template<typename T> class BSTInOrderIterator;
+    template<typename T> class BSTPostOrderIterator;
+
+    template<typename T> class BinaryTreeNode {
     // friend declaration
-    friend template<typename T, typename U> class BinarySearchTree;
+    friend class BinarySearchTree<T>;
+    friend class BSTPreOrderIterator<T>;
+    friend class BSTInOrderIterator<T>;
+    friend class BSTPostOrderIterator<T>;
 
     public:
         // constructor
-        BinaryTreeNode(void);
-        BinaryTreeNode(U &key, T *data,
-                       BinaryTreeNode<T, U> left,
-                       BinaryTreeNode<T, U> right);
+        BinaryTreeNode();
+        BinaryTreeNode(T &data,
+                       BinaryTreeNode<T> *left,
+                       BinaryTreeNode<T> *right);
 
         // get left child
-        inline BinaryTreeNode<T, U> left();
+        inline BinaryTreeNode<T> *left();
         // get right child
-        inline BinaryTreeNode<T, U> right();
+        inline BinaryTreeNode<T> *right();
         // get satellite data
-        inline U &data();
+        inline T &data();
 
     private:
-        T  _key;                         // key of the satellite data object
-        U &_satellite;
+        T &_satellite;
 
-        BinaryTreeNode<T, U> *_left;
-        BinaryTreeNode<T, U> *_right;
+        BinaryTreeNode<T> *_left;
+        BinaryTreeNode<T> *_right;
     };
 }
 
